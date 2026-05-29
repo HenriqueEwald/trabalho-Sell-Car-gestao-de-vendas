@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SellCar - Gestão de vendas </title>
+     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+     <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header>
+    <h1 class="logo">Sell<span>Car</span></h1>
+    <div class="header-stats">
+        <div><strong id="stat-total">0</strong>Veículos</div>
+        <div><strong id="stat-disp">0</strong>Disponíveis</div>
+        <div><strong id="stat-vend">0</strong>Vendidos</div>
+    </div>
+</header>
+    
+<main>
+
+    <aside class="sidebar">
+        <section class="panel" style="margin-bottom:1.2rem">
+            <h2 class="panel-title">➕ "Novo veículo"</h2>
+
+            <fieldset style="border:none;padding:0;margin:0">
+                <div class="field">
+                    <label for="f-modelo">Marca / Modelo</label>
+                    <input id="f-modelo" type="text" placeholder="Ex: Toyota Corolla"/>
+                </div>
+
+                <div class="row2">
+                    <div class="field">
+                        <label for="f-ano">Ano</label>
+                        <input id="f-ano" type="number" placeholder="2024" min="1900" max="2026"/>
+                </div>
+            </div>
+                    <div class="field">
+                        <label for="f-cor">Cor</label>
+                        <input id="f-Cor" type="text" placeholder="branco"/>
+                </div>
+                 <div class="field">
+                        <label for="f-preco">Preço (R$)</label>
+                        <input id="f-preco" type="number" placeholder="85000" min="0"/>
+                </div>
+                <div class="field">
+                        <label for="f-preco">Preço (R$)</label>
+                        <input id="f-preco" type="number" placeholder="85000" min="0"/>
+                </div>
+                <div class="field">
+                        <label for="f-status">Status</label>
+                        <select id="f-status" type="text">
+                        <option value="disponivel">Disponível</option>
+                        <option value="reservado">Reservado</option>
+                        <option value="vendido">Vendido</option>
+                    </select>
+                    <div class="field">
+                        <label class for="f-vendedor">Vendedor Responsável</label>
+                        <select id="f-vendedor"><option value="">carregando...</option></select>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </fieldset>
+
+        </section>
+
+    </aside>
+
+</main>
+
+</body>
+</html>
