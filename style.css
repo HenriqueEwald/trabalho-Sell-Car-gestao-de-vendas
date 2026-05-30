@@ -14,7 +14,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 body {
@@ -33,7 +32,7 @@ header,
 
 header {
   height: 70px;
-  padding: 0 2rem;
+  padding: 0 32px;
   background: var(--card);
   border-bottom: 1px solid var(--border);
 }
@@ -41,21 +40,21 @@ header {
 main {
   max-width: 1300px;
   margin: auto;
-  padding: 2rem;
+  padding: 32px;
   display: grid;
   grid-template-columns: 320px 1fr;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .sidebar,
 .vendedor-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .logo {
-  font: 2rem 'Bebas Neue', sans-serif;
+  font: 32px 'Bebas Neue', sans-serif;
   letter-spacing: 2px;
 }
 
@@ -66,11 +65,6 @@ main {
 .car-price,
 .header-stats strong {
   color: var(--accent);
-}
-
-.header-stats {
-  display: flex;
-  gap: 1rem;
 }
 
 .header-stats {
@@ -323,3 +317,4 @@ dialog::backdrop {
     grid-template-columns: 1fr;
   }
 }
+
