@@ -315,3 +315,21 @@ dialog::backdrop {
     grid-template-columns: 1fr;
   }
 }
+
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #333;
+  color: #fff;
+  padding: 0.8rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#toast.toast-visivel {
+  opacity: 1;
+}
