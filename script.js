@@ -112,9 +112,20 @@ function atualizarEstatisticas() {
   document.getElementById('stat-vend').textContent = vendidos.length;
 }
 
+function exibirToast(mensagem) {
+  const toast = document.getElementById('toast');
+  toast.textContent = mensagem;
+  toast.classList.add('toast-visivel');
+
+  setTimeout(function() {
+    toast.classList.remove('toast-visivel');
+  }, 3000);
+}
+
 function removerCarro(id) {
   posts = posts.filter(p => p.id !== id);
   exibirPosts(posts);
+  exibirToast('Veículo removido com sucesso!');
 }
 
 function cadastrarCarro() {
@@ -144,6 +155,7 @@ function cadastrarCarro() {
 
   posts.push(novoCarro);
   exibirPosts(posts);
+  exibirToast('Veículo cadastrado com sucesso!');
 
   document.getElementById('f-modelo').value = '';
   document.getElementById('f-ano').value = '';
@@ -179,6 +191,7 @@ function salvarEdicao() {
 
   document.getElementById('modal').close();
   exibirPosts(posts);
+  exibirToast('Veículo atualizado com sucesso!');
 }
 
 document.getElementById('btn-cadastrar').addEventListener('click', cadastrarCarro);
