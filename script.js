@@ -57,6 +57,12 @@ function exibirPosts(lista) {
 
   lista.forEach(function(post) {
     const extras = gerarDadosExtras(post.id);
+
+    const ano = post.ano || extras.ano;
+    const cor = post.cor || extras.cor;
+    const preco = post.preco || extras.preco;
+    const status = post.status || extras.status;
+
     const vendedor = usuarios.find(u => u.id === post.userId);
     const nomeVendedor = vendedor ? vendedor.name : 'Sem vendedor';
 
@@ -67,12 +73,12 @@ function exibirPosts(lista) {
     card.innerHTML = `
       <div class="car-card-header">
         <span class="car-modelo">${post.title}</span>
-        <span class="badge badge-${extras.status}">${extras.status}</span>
+        <span class="badge badge-${status}">${status}</span>
       </div>
       <div class="car-info">
-        <span>📅 ${extras.ano}</span>
-        <span>🎨 ${extras.cor}</span>
-        <span>💰 R$ ${extras.preco.toLocaleString('pt-BR')}</span>
+        <span>📅 ${ano}</span>
+        <span>🎨 ${cor}</span>
+        <span>💰 R$ ${Number(preco).toLocaleString('pt-BR')}</span>
         <span>👤 ${nomeVendedor}</span>
       </div>
       <div class="car-actions">
@@ -92,12 +98,14 @@ function atualizarEstatisticas() {
 
   const disponiveis = posts.filter(p => {
     const extras = gerarDadosExtras(p.id);
-    return extras.status === 'disponivel';
+    const status = p.status || extras.status;
+    return status === 'disponivel';
   });
 
   const vendidos = posts.filter(p => {
     const extras = gerarDadosExtras(p.id);
-    return extras.status === 'vendido';
+    const status = p.status || extras.status;
+    return status === 'vendido';
   });
 
   document.getElementById('stat-disp').textContent = disponiveis.length;
@@ -108,6 +116,42 @@ function removerCarro(id) {
   posts = posts.filter(p => p.id !== id);
   exibirPosts(posts);
 }
+
+function cadastrarCarro() {
+  const modelo = document.getElementById('f-modelo').value.trim();
+  const ano = document.getElementById('f-ano').value;
+  const cor = document.getElementById('f-Cor').value.trim();
+  const preco = document.getElementById('f-preco').value;
+  const status = document.getElementById('f-status').value;
+  const userId = Number(document.getElementById('f-vendedor').value);
+
+  if (!modelo || !ano || !cor || !preco) {
+    alert('Preencha todos os campos!');
+    return;
+  }
+
+  const novoId = posts.length > 0 ? Math.max(...posts.map(p => p.id)) + 1 : 1;
+
+  const novoCarro = {
+    id: novoId,
+    title: modelo,
+    ano: Number(ano),
+    cor: cor,
+    preco: Number(preco),
+    status: status,
+    userId: userId
+  };
+
+  posts.push(novoCarro);
+  exibirPosts(posts);
+
+  document.getElementById('f-modelo').value = '';
+  document.getElementById('f-ano').value = '';
+  document.getElementById('f-Cor').value = '';
+  document.getElementById('f-preco').value = '';
+}
+
+document.getElementById('btn-cadastrar').addEventListener('click', cadastrarCarro);
 
 buscarPosts();
 buscarUsuarios();
