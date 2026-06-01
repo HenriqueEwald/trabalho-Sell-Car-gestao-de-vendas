@@ -87,5 +87,22 @@ function exibirPosts(lista) {
   atualizarEstatisticas();
 }
 
+function atualizarEstatisticas() {
+  document.getElementById('stat-total').textContent = posts.length;
+
+  const disponiveis = posts.filter(p => {
+    const extras = gerarDadosExtras(p.id);
+    return extras.status === 'disponivel';
+  });
+
+  const vendidos = posts.filter(p => {
+    const extras = gerarDadosExtras(p.id);
+    return extras.status === 'vendido';
+  });
+
+  document.getElementById('stat-disp').textContent = disponiveis.length;
+  document.getElementById('stat-vend').textContent = vendidos.length;
+}
+
 buscarPosts();
 buscarUsuarios();
